@@ -13,7 +13,7 @@ const projects = [
         imageAlt: "Sorting Algorithm Visualizer",
         isReversed: false,
         // ✅ FIRST PROJECT LINK INSERTED HERE
-        projectUrl: "https://algo-viz-bgpk.onrender.com/" 
+        projectUrl: "https://algo-viz-v1.vercel.app/" 
     },
     { 
         id: 2, 
@@ -21,11 +21,11 @@ const projects = [
         category: "Collaborative Web App",
         description: "A real-time collaborative whiteboard application built using the MERN stack (MongoDB, Express, React, Node.js) and WebSockets. Users can draw, write, and interact on a shared canvas in real-time, making it an ideal tool for remote brainstorming and teamwork.",
         tags: ["MERN Stack", "WebSockets", "Real-Time"],
-        imageUrl: "/syncboard-thumbnail.png",
+        imageUrl: "/syncboard-landing2.png",
         imageAlt: "Collaborative Whiteboard",
         isReversed: true,
         // 👈 INSERT SECOND PROJECT LINK HERE when ready
-        projectUrl: "https://github.com/noturbob/syncboard" 
+        projectUrl: "https://syncboard-xi.vercel.app/" 
     },
 ];
 

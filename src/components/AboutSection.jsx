@@ -29,6 +29,7 @@ const AboutSection = () => {
                             <p className="text-gray-300 text-lg">
                                 I have cultivated a strong foundation in computer science fundamentals, successfully solving over 150 LeetCode problems in C++. Additionally, I have gained hands-on experience in web development, with a deep interest in full-stack technologies. I am now actively seeking opportunities to apply my skills and contribute to a professional team while continuing to learn and grow.
                             </p>
+                            <div></div>
                             <div className="grid grid-cols-2 gap-4 text-gray-400">
                                 <p><strong className="text-violet-400">Location:</strong> Hyderabad / Open to work in Mumbai</p>
                                 <p><strong className="text-violet-400">Experience:</strong> Fresher</p>
