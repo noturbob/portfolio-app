@@ -3,7 +3,7 @@ import AnimatedWrapper from './AnimatedWrapper';
 import { ChevronRight } from 'lucide-react';
 
 // 1. ACCEPT THE NEW PROP: projectUrl
-const ProjectBlock = ({ title, category, description, tags, imageUrl, imageAlt, isReversed, delay, projectUrl }) => {
+const ProjectBlock = ({ title, category, description, tags, imageUrl, imageAlt, isReversed, delay, projectUrl, githubUrl }) => {
     const slideImage = isReversed ? 'slide-right' : 'slide-left';
     const slideText = isReversed ? 'slide-left' : 'slide-right';
 
@@ -34,6 +34,10 @@ const ProjectBlock = ({ title, category, description, tags, imageUrl, imageAlt, 
                       {/* 2. USE THE NEW PROP in href */}
                       <a href={projectUrl} target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:text-violet-300 font-semibold flex items-center transition duration-300">
                           View Live Project
+                          <ChevronRight className="w-5 h-5 ml-1" />
+                      </a>
+                      <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-violet-400 hover:text-violet-300 font-semibold flex items-center transition duration-300">
+                          GitHub Repository
                           <ChevronRight className="w-5 h-5 ml-1" />
                       </a>
                     </AnimatedWrapper>

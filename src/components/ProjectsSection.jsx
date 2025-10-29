@@ -13,7 +13,8 @@ const projects = [
         imageAlt: "Sorting Algorithm Visualizer",
         isReversed: false,
         // ✅ FIRST PROJECT LINK INSERTED HERE
-        projectUrl: "https://algo-viz-v1.vercel.app/" 
+        projectUrl: "https://algo-viz-v1.vercel.app/",
+        githubUrl: "https://github.com/noturbob/algo_viz"
     },
     { 
         id: 2, 
@@ -25,7 +26,8 @@ const projects = [
         imageAlt: "Collaborative Whiteboard",
         isReversed: true,
         // 👈 INSERT SECOND PROJECT LINK HERE when ready
-        projectUrl: "https://syncboard-xi.vercel.app/" 
+        projectUrl: "https://syncboard-xi.vercel.app/",
+        githubUrl: "https://github.com/noturbob/syncboard"
     },
 ];
 
@@ -50,7 +52,8 @@ const ProjectsSection = () => {
                             imageAlt={project.imageAlt}
                             isReversed={project.isReversed}
                             delay={0}
-                            projectUrl={project.projectUrl} // Pass the link down
+                            projectUrl={project.projectUrl} 
+                            githubUrl={project.githubUrl}// Pass the link down
                         />
                     ))}
                 </div>
