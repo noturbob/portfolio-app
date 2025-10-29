@@ -9,7 +9,7 @@ const projects = [
         category: "Data Visualization Tool",
         description: "A dynamic web application built with React.js that visually demonstrates how various sorting algorithms work. The tool allows users to control the speed and size of the array, making complex algorithms easy to understand and learn.",
         tags: ["React.js", "JavaScript", "HTML/CSS"],
-        imageUrl: "/algo-viz-thumbnail.png",
+        imageUrl: "/algo-viz.png",
         imageAlt: "Sorting Algorithm Visualizer",
         isReversed: false,
         // ✅ FIRST PROJECT LINK INSERTED HERE
