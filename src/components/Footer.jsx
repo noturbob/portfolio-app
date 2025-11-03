@@ -89,7 +89,7 @@ const Footer = () => (
             <div className="mt-8 pt-8 border-t border-gray-800/50 text-center">
                 <p className="text-xs text-gray-600 mb-3">Built with cutting-edge technologies</p>
                 <div className="flex justify-center gap-4 flex-wrap">
-                    {['React 19', 'Tailwind CSS', 'Node.js', 'MongoDB'].map(tech => (
+                    {['React 19', 'Tailwind CSS', 'Node.js'].map(tech => (
                         <span key={tech} className="px-3 py-1 rounded-full bg-gray-900 text-gray-400 text-xs border border-gray-800">
                             {tech}
                         </span>
