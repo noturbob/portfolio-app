@@ -9,6 +9,7 @@ import {
   SmartLink,
   Text,
 } from "@once-ui-system/core";
+import { TechStack } from "@/components/TechStack";
 
 interface ProjectCardProps {
   href: string;
@@ -19,6 +20,7 @@ interface ProjectCardProps {
   description: string;
   avatars: { src: string }[];
   link: string;
+  stack?: { name: string; icon?: string }[];
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -29,6 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   avatars,
   link,
+  stack = [],
 }) => {
   return (
     <Column fillWidth gap="m">
@@ -62,6 +65,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                 {description}
               </Text>
             )}
+            <TechStack stack={stack} size="s" />
             <Flex gap="24" wrap>
               {content?.trim() && (
                 <SmartLink

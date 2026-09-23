@@ -17,7 +17,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, TechStack } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
@@ -118,6 +118,7 @@ export default async function Project({
           </Text>
         </Row>
       </Row>
+      <TechStack stack={post.metadata.stack} size="l" horizontal="center" marginBottom="16" />
       {post.metadata.images.length > 0 && (
         <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
       )}
