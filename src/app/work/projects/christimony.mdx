@@ -1,0 +1,22 @@
+---
+title: "Christimony — Matrimony Platform (WIP)"
+publishedAt: "2026-09-03"
+summary: "A Hinge/Bumble-style matrimony platform for Christians with denomination-aware matching and a parent/ward model built around the child's independent consent."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/christimony"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://christimony.vercel.app"
+---
+## Overview
+Christimony is a modern matrimony platform for Christians. Its distinctive feature is a parent/ward model: a parent can guide a profile on a child's behalf, but the child always gives independent consent before any real connection opens. The marketing site is live; the app is in progress.
+## Architecture
+- **Web**: Next.js 16 (App Router, React 19, Tailwind v4). The browser never talks to the API directly or holds the JWT — a backend-for-frontend proxy keeps the session in an httpOnly cookie.
+- **Backend**: Ruby on Rails 8.1 API with PostgreSQL, JWT auth and S3-compatible storage.
+- **Mobile**: Flutter client (Android + iOS), early scaffold, talking to Rails directly with the token in platform secure storage.
+- **Phone OTP login**, with a development mode that never sends real SMS.
+## Technologies Used
+- **Next.js, Ruby on Rails, PostgreSQL, Flutter**.

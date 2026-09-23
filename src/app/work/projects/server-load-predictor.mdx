@@ -1,0 +1,25 @@
+---
+title: "Server Load Predictor"
+publishedAt: "2026-09-15"
+summary: "Forecasts data-center server load with machine learning and turns the forecast into concrete scale-up and scale-down actions, shown in a live Next.js dashboard."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/server-load-predictor"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://frontend-brown-omega-7i959ks1g4.vercel.app"
+---
+## Overview
+Server Load Predictor forecasts how much capacity a data center will need *before* it needs it, and turns that forecast into concrete actions — e.g. "Add 8 servers by Thu 01:00" or "Remove 9 servers at 03:00, save $412 this week". Reactive autoscaling only kicks in after load arrives; forecasting lets you scale ahead of time.
+## Key Features
+- **Usage history**: Hourly CPU, memory and network per cluster, from a realistic synthetic dataset (daily/weekly cycles, growth, spikes, month-end surge, a Black Friday event) or the Alibaba 2018 cluster trace.
+- **LightGBM forecasting**: Lag, rolling-window, seasonal and calendar features; forecasts every hour of the next 7 days with a median and a p10–p90 range.
+- **Scaling recommendations**: Sizes each cluster so the p90 forecast stays under a target utilization, accounting for boot time, avoiding flapping, and pricing the plan.
+- **Simulation clock**: Replays held-out weeks hour by hour so you can watch forecasts meet reality.
+## Technologies Used
+- **Python, LightGBM, FastAPI**: For the forecasting service.
+- **Next.js, TypeScript, TanStack Query**: For the dashboard.
+## Source
+[github.com/noturbob/server-load-predictor](https://github.com/noturbob/server-load-predictor)

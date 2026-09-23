@@ -1,0 +1,24 @@
+---
+title: "Penblem — Apple Pencil as a Linux Drawing Tablet"
+publishedAt: "2026-09-17"
+summary: "Fuses Apple Pencil pressure over Bluetooth LE with laptop touchpad tracking into a virtual Linux pen tablet via uinput."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/Penblem"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://github.com/noturbob/Penblem"
+---
+## Overview
+Penblem turns an Apple Pencil (non-Pro) into a pressure-sensitive stylus on a non-touch Linux laptop. Pressure and taps come from the Pencil over BLE, absolute X/Y comes from the laptop's own touchpad, and both are fused into a virtual pen tablet exposed through `/dev/uinput`.
+## Key Features
+- **BLE probing**: `penblem probe` dumps the Pencil's BLE characteristics and live notification bytes to discover the (non-public) pressure and tap UUIDs.
+- **Sensor fusion**: `penblem run` grabs the touchpad and emits a virtual "penblem Apple Pencil" tablet device.
+- **Stale-pressure guard**: Pressure only counts if a BLE packet arrived within a configurable window, so an idle Pencil can't leave a stuck pressure value that a bare finger would inherit.
+- **One-shot setup**: A setup script installs BlueZ and libinput tooling, loads `uinput` and installs udev rules.
+## Technologies Used
+- **Rust**, **BlueZ / Bluetooth LE**, **Linux uinput and evdev**.
+## Challenges and Learnings
+Testing showed the laptop's capacitive touchpad doesn't sense the Pencil's bare plastic tip at all, so the touchpad half needs a conductive nib — a hardware constraint that shaped the design.

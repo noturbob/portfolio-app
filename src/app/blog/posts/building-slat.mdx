@@ -1,0 +1,44 @@
+---
+title: "Building a terminal multiplexer from scratch in Go"
+subtitle: "What I learned making Slat, my take on tmux"
+summary: "I wanted to understand how a terminal session survives a disconnect, so I built my own multiplexer. The hardest part turned out to be reading input correctly."
+image: "https://opengraph.githubassets.com/1/noturbob/slat"
+publishedAt: "2026-09-17"
+tag: "Systems"
+---
+
+I use tmux every day, and at some point I wanted to know how it actually works. How does a terminal session keep running after you close the window? How do you reattach and find everything exactly where you left it?
+
+The best way I know to answer a question like that is to build the thing. So I built **Slat**, a terminal multiplexer written in Go.
+
+## The architecture
+
+Slat is split into two parts:
+
+- A **background daemon** that owns the actual terminal sessions. It keeps running when you detach.
+- A **client** that connects to the daemon over **Unix domain sockets** and draws what you see.
+
+Because the sessions live in the daemon and not in your terminal window, closing the window doesn't kill anything. You reattach and the session is still there.
+
+Inside, Go's goroutines and buffered channels keep the input and output streams separate, so one slow stream can't block the others.
+
+## The hard part: input doesn't arrive in neat pieces
+
+I expected rendering to be the hard part. It wasn't. Reading input was.
+
+Raw PTY streams don't arrive as clean, complete messages. A single keypress or escape sequence can be split across two reads, depending on how the data happened to be chunked on its way through the socket. If you parse each chunk on its own, you misread keys.
+
+The fix was a **timing-based finite state machine** for input parsing. It keeps track of where it is inside a sequence and waits for the rest before deciding what the input means, so it reads keys correctly however the data is chunked.
+
+## Drawing the screen
+
+I also wrote a small terminal UI engine directly on top of **raw ANSI escape codes**, with support for dynamic tiling layouts. No TUI library, which meant learning exactly what a terminal does with every byte you send it.
+
+## Where it ended up
+
+- **Under 5 ms** input latency.
+- **100% session persistence**: a detached session reattaches with zero data loss.
+
+Getting the daemon to keep sessions alive without leaking resources took several rounds of fixes. But I now understand terminals in a way I never would have just by using them.
+
+[See the Slat project →](/work/slat)

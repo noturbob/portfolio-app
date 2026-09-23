@@ -1,0 +1,36 @@
+---
+title: "Why my RAG app kept crashing, and how I cut its memory by 92%"
+subtitle: "Moving Doctype.io from FAISS to a serverless vector store"
+summary: "Doctype.io worked perfectly on my laptop and kept running out of memory in the cloud. Here's what was going wrong and how I fixed it."
+image: "https://opengraph.githubassets.com/1/noturbob/doctype.io"
+publishedAt: "2026-09-10"
+tag: "Engineering"
+---
+
+Doctype.io lets you upload a PDF and ask it questions instead of scrolling through pages. Under the hood it's a Retrieval-Augmented Generation (RAG) pipeline: split the document into chunks, turn each chunk into an embedding, find the chunks closest to your question, and hand those to the model to answer from.
+
+I built the whole thing solo: FastAPI backend, React frontend, LangChain and Google Gemini for the RAG pipeline, Clerk for auth, deployed on Vercel and Render. Locally, it worked great.
+
+## The problem
+
+In the cloud, it kept crashing with out-of-memory errors, and it got worse as usage grew.
+
+The cause was the vector search. The first version used FAISS, which keeps the entire index **in the application's memory**. On a laptop that's fine. On a small cloud instance, every uploaded document made the process bigger until it hit the limit and died.
+
+## The fix
+
+I couldn't tune my way out of this. The real problem was the design: the app server shouldn't be holding the index at all.
+
+So I redesigned the vector search mid-project and moved to **Upstash Vector** with **Google Gemini embeddings**. The index lives in a serverless vector database, and the app just sends queries to it. The backend no longer grows with every document.
+
+## The result
+
+- Backend memory usage dropped by **92%**.
+- The out-of-memory crashes stopped completely.
+- Response latency stayed **under 200 ms**, with relevance accuracy above **95%**.
+
+## What I took away
+
+"Works on my machine" and "works in production" are different requirements. The most important decision on this project wasn't a feature. It was noticing that the architecture itself didn't fit the environment it ran in, and being willing to change it partway through.
+
+[Read more about Doctype.io →](/work/doctype)

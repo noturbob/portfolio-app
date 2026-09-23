@@ -1,0 +1,36 @@
+---
+title: "32 hours, one open problem statement, first place"
+subtitle: "How we built TradeQuest at CodeSprint 2026"
+summary: "At CodeSprint 2026 we had 32 hours to turn 'build something that helps students learn' into a working product. Here's how it went."
+image: "https://opengraph.githubassets.com/1/noturbob/trade-quest"
+publishedAt: "2026-02-10"
+tag: "Hackathons"
+---
+
+CodeSprint 2026 was a 32-hour national-level hackathon at St Aloysius (Deemed to be University), Mangaluru. The problem statement was wide open: **build something that helps students learn.**
+
+My teammate [@whyismeleige](https://github.com/whyismeleige) and I built **TradeQuest**, a gamified virtual stock trading league for students. Competing as Team ByteMonks, we won the external participants category.
+
+## The idea
+
+Trading is a skill students are curious about but have no safe way to practise. TradeQuest gives them a market they can't lose real money in, and makes it competitive enough that they keep coming back:
+
+- **Real-time price updates**, so the market feels alive.
+- **Daily, weekly and monthly leagues** with live leaderboards.
+- **Achievements and XP** to reward progress.
+
+## The technical bet: our own market
+
+We decided not to depend on live market data. Instead, we wrote a **simulation-based algorithm** from scratch to drive how prices move. That gave us full control over the market and no dependency on an outside data feed during a live demo. It was also the hardest part of the build: under heavy time pressure, the market still had to feel realistic.
+
+The stack was Node.js and Next.js for the app, FastAPI for backend services, AWS for hosting and Cloudinary for media.
+
+## Working in 32 hours
+
+With two people and a fixed deadline, the real constraint was coordination. We made architectural decisions fast and split the work carefully so neither of us was ever waiting on the other.
+
+## The result
+
+We shipped a complete, working, demoable product inside the 32-hour window and took **first place in the external participants category**. [Daijiworld covered the event](/press).
+
+[See the TradeQuest project →](/work/tradequest)

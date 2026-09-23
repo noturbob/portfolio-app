@@ -1,0 +1,30 @@
+---
+title: "Doctype.io — AI-Powered Document Analysis Platform"
+publishedAt: "2025-03-15"
+summary: "An end-to-end RAG platform that lets users interact with PDF documents through an AI agent, rebuilt mid-project to fix a critical production memory issue."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/doctype.io"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://github.com/noturbob/doctype.io"
+---
+## Overview
+Doctype.io is a Retrieval-Augmented Generation (RAG) platform that lets users upload a PDF and interact with it conversationally through an AI agent, instead of manually searching through pages. I built the entire system solo — backend, frontend, vector search, authentication, and deployment.
+## Key Features
+- **Conversational Document Q&A**: Users upload a PDF and ask questions directly, with the AI agent retrieving and reasoning over the relevant sections.
+- **Real-Time Streaming Responses**: Answers stream back to the user token-by-token instead of waiting for a full response.
+- **Secure Authentication**: Integrated Clerk for user auth and secure file handling.
+- **Glassmorphic UI**: A clean, modern interface built with Tailwind CSS.
+## Technologies Used
+- **FastAPI**: For the backend API layer.
+- **React**: For the frontend.
+- **LangChain and Google Gemini**: For the RAG pipeline and embeddings.
+- **Upstash Vector**: For serverless vector search, after migrating from FAISS.
+- **Vercel and Render**: For deployment.
+## Challenges and Learnings
+The original version used FAISS for vector search, which held the entire index in memory. Under real cloud constraints this caused recurring out-of-memory crashes once usage grew. I redesigned the vector search architecture mid-project, migrating to Upstash Vector combined with Google Gemini Embeddings — a serverless approach that doesn't require holding the index in application memory at all. This was the single biggest engineering decision on the project and taught me a lot about designing for production constraints rather than just local development.
+## Outcome
+The migration cut backend memory usage by 92% and eliminated the out-of-memory crashes entirely, while keeping response latency under 200ms and relevance accuracy above 95%. The platform now runs reliably in a real cloud environment rather than just working locally.

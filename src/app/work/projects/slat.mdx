@@ -1,0 +1,28 @@
+---
+title: "Slat — Terminal Multiplexer"
+publishedAt: "2025-06-10"
+summary: "A terminal multiplexer built from scratch in Go, with a background daemon that lets sessions detach and reattach without losing any data."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/slat"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://github.com/noturbob/slat"
+---
+## Overview
+Slat is a terminal multiplexer — similar in spirit to tmux — built entirely in Go. The goal was to understand how session persistence actually works under the hood: how a terminal session can survive a disconnect, and how a client-server architecture handles real-time I/O without dropping data.
+## Key Features
+- **Persistent Background Daemon**: Sessions run in a background daemon and can be detached and reattached at any time without losing state.
+- **Client-Server Architecture**: Uses Unix Domain Sockets to communicate between the client and the daemon, keeping I/O fast and local.
+- **Custom TUI Engine**: Built a lightweight terminal UI engine using raw ANSI escape codes, supporting dynamic tiling layouts.
+- **Robust Input Parsing**: A timing-based finite state machine handles input parsing, resolving packet fragmentation issues that come up with raw PTY handling.
+## Technologies Used
+- **Go**: Using Goroutines and Buffered Channels to decouple I/O streams.
+- **Unix Domain Sockets**: For client-server communication.
+- **PTY (pseudo-terminal) handling**: For raw terminal control.
+## Challenges and Learnings
+The hardest part was handling packet fragmentation correctly — raw PTY streams don't arrive as clean, well-formed messages, so I had to build a finite state machine to parse input reliably regardless of how it was chunked over the socket. Getting the daemon to reliably persist sessions without leaking resources also took several iterations.
+## Outcome
+The final implementation achieves under 5ms input latency and 100% process persistence — a detached session reattaches with zero data loss, every time.

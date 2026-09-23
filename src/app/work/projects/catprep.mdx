@@ -1,0 +1,23 @@
+---
+title: "CatPrep — Targeted CAT 2026 Prep App"
+publishedAt: "2026-09-16"
+summary: "A personal CAT 2026 preparation app with a faithful CAT test interface, timed mocks, per-question time tracking, an error log and a strategy-aware scoring model."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/CatPrep"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://github.com/noturbob/CatPrep"
+---
+## Overview
+CatPrep is a personal, targeted preparation app for CAT 2026: daily practice, a faithful CAT test interface with the on-screen calculator, timed mocks, per-question time tracking, an error log, and a dashboard that sorts IIM admission mail into categories.
+## The Strategy Behind It
+Quant is deliberately narrowed to Arithmetic and easy-to-mid Algebra, which together make up 60–70% of the QA section. Because those skips are intentional, mock scoring reports **attemptable accuracy** (correct ÷ in-scope attempted) as the headline and counts out-of-scope questions separately — so following the strategy never reads as failure.
+## Key Features
+- 150 original CAT-pattern practice questions, verified on load.
+- A 74-day study plan, 21 IIMs and percentile anchors seeded into the database.
+- A parser (with regression tests) for importing past-year questions.
+## Technologies Used
+- **Next.js 16, React 19, Tailwind v4, Drizzle ORM, PostgreSQL**, with single-password auth via an HMAC-signed cookie.

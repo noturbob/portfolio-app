@@ -1,0 +1,25 @@
+---
+title: "WiZ PC — Local Smart Bulb Controller"
+publishedAt: "2026-05-13"
+summary: "Control Philips WiZ smart bulbs from your PC: a low-latency C++ daemon speaking the bulbs' local UDP protocol, plus a Next.js dashboard with built-in lighting effects."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/wiz-pc"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://github.com/noturbob/wiz-pc"
+---
+## Overview
+wiz-pc controls every Philips WiZ bulb on the local network straight from a PC — no cloud, no phone app, no account. A daemon (`wizd`) talks to the bulbs over their own local UDP protocol, and a browser dashboard drives it.
+## Key Features
+- **C++23 daemon**: Non-blocking UDP to the bulbs with a latest-wins, rate-limited send scheduler, so a slow bulb never builds up a backlog of stale commands.
+- **Hand-rolled WebSocket server**: The dashboard talks directly to the daemon, with no API routes in between.
+- **Nine built-in effects**: Rainbow, aurora, candle, fireplace, ocean, breathe, storm, strobe and a morph between them — each a pure time/position function evaluated in the same tick that drives the bulbs.
+- **Hardware-free dev mode**: `--fake N` spins up virtual bulbs on loopback.
+## Technologies Used
+- **C++23, CMake, OpenSSL**: For the daemon.
+- **Next.js and shadcn/ui**: For the dashboard, with a live color swatch and controls per bulb.
+## Status
+Manual color/brightness/temperature control, all nine effects and real bulb discovery work. Audio-reactive modes, screen sync, scenes and schedules are next.

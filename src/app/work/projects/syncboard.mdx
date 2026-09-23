@@ -1,0 +1,26 @@
+---
+title: "Syncboard — Real-Time Collaborative Whiteboard"
+publishedAt: "2025-09-27"
+summary: "A real-time collaborative whiteboard built with the MERN stack, WebSockets and Redis — shared canvases, live cursors, autosave and invite links."
+images:
+  - "https://opengraph.githubassets.com/1/noturbob/syncboard"
+team:
+  - name: "Bobby Anthene"
+    role: "Solo Developer"
+    avatar: "/images/avatar2.jpeg"
+    linkedIn: "https://linkedin.com/in/bobby-anthene"
+link: "https://syncboard.bobby-anthene.me"
+---
+## Overview
+Syncboard is a full-stack whiteboard where every stroke is broadcast to all participants instantly.
+## Key Features
+- **Real-time collaboration**: Draw, add shapes and see other users' cursors move live over WebSockets.
+- **Toolbar**: Pencil, eraser, line, rectangle and circle tools with adjustable color and brush size.
+- **Secure auth**: Registration, login and password recovery with JWT, plus a Redis-backed token blacklist for real logouts.
+- **Autosave**: Boards save to MongoDB after a pause in drawing.
+- **Invite links**: Unique "Co-board" links start private multi-user sessions.
+## Technologies Used
+- **React, Tailwind CSS, Framer Motion, Socket.IO client**: Frontend.
+- **Node.js, Express, MongoDB, Socket.IO, Redis, JWT**: Backend.
+## Source
+[github.com/noturbob/syncboard](https://github.com/noturbob/syncboard)
