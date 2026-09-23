@@ -67,3 +67,7 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+/* Match overscroll and edge-to-edge areas on mobile to the page color */
+html {
+  background: var(--page-background);
+}

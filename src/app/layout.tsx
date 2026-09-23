@@ -1,3 +1,4 @@
+import type { Viewport } from "next";
 import "@once-ui-system/core/css/styles.css";
 import "@once-ui-system/core/css/tokens.css";
 import "@/resources/custom.css";
@@ -15,6 +16,14 @@ import {
 } from "@once-ui-system/core";
 import { Footer, Header, RouteGuard, Providers } from "@/components";
 import { baseURL, effects, fonts, style, dataStyle, home, person } from "@/resources";
+
+// viewportFit "cover" lets the page draw edge to edge behind the phone's status and home bars;
+// safe-area insets below keep content clear of the notch and home indicator.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -94,6 +103,27 @@ export default async function RootLayout({
                       root.setAttribute('data-' + key, value);
                     }
                   });
+
+                  // Keep the mobile browser bars the same color as the top of the page (the cyan glow),
+                  // following theme changes. Sampled from the rendered page; update if the brand color changes.
+                  const barColors = { light: '#ccf6fe', dark: '#0a2034' };
+                  const syncThemeColor = () => {
+                    const color = barColors[root.getAttribute('data-theme')];
+                    if (!color) return;
+                    let meta = document.querySelector('meta[name="theme-color"]');
+                    if (!meta) {
+                      meta = document.createElement('meta');
+                      meta.name = 'theme-color';
+                      document.head.appendChild(meta);
+                    }
+                    meta.content = color;
+                  };
+                  new MutationObserver(syncThemeColor).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', syncThemeColor);
+                  } else {
+                    syncThemeColor();
+                  }
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
                   document.documentElement.setAttribute('data-theme', 'dark');
@@ -108,7 +138,7 @@ export default async function RootLayout({
           as="body"
           background="page"
           fillWidth
-          style={{ minHeight: "100vh" }}
+          style={{ minHeight: "100dvh", paddingTop: "env(safe-area-inset-top)" }}
           margin="0"
           padding="0"
           horizontal="center"

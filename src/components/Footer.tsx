@@ -1,4 +1,4 @@
-import { Row, IconButton, SmartLink, Text } from "@once-ui-system/core";
+import { Row, IconButton, Text } from "@once-ui-system/core";
 import { person, social } from "@/resources";
 import styles from "./Footer.module.scss";
 
@@ -25,11 +25,6 @@ export const Footer = () => {
           <Text onBackground="neutral-weak">© {currentYear} /</Text>
           <Text paddingX="4">{person.name}</Text>
         </Text>
-        {/* The template's CC BY-NC 4.0 license requires this credit unless you hold a Once UI Pro license. */}
-        <Text variant="body-default-xs" onBackground="neutral-weak">
-          Template by{" "}
-          <SmartLink href="https://once-ui.com/products/magic-portfolio">Once UI</SmartLink>
-        </Text>
         <Row gap="16">
           {social.map(
             (item) =>
@@ -46,7 +41,7 @@ export const Footer = () => {
           )}
         </Row>
       </Row>
-      <Row height="80" hide s={{ hide: false }} />
+      <Row height="80" hide s={{ hide: false }} style={{ height: "calc(var(--static-space-80) + env(safe-area-inset-bottom))" }} />
     </Row>
   );
 };

@@ -56,6 +56,7 @@ export const Header = () => {
         bottom="0"
         to="top"
         height="80"
+        style={{ height: "calc(var(--static-space-80) + env(safe-area-inset-bottom))" }}
         zIndex={9}
       />
       <Row

@@ -23,4 +23,4 @@ Open http://localhost:3000.
 
 ## License
 
-The underlying template is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/); attribution to Once UI is shown in the site footer. See `LICENSE`.
+The underlying template is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/); see `LICENSE`. Footer credit was removed pending a Once UI Pro license.
